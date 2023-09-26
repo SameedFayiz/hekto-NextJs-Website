@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import {
   FeaturedTypeOne,
   FeaturedTypeThree,
   FeaturedTypeTwo,
 } from "./components/featured/featured";
+import Loading from "./loading";
 const myFeaturedOne = [
   {
     id: 7,
@@ -214,20 +216,23 @@ const myFeaturedThree = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen w-full">
-      <div>
-        <FeaturedTypeOne data={myFeaturedOne}></FeaturedTypeOne>
-        <FeaturedTypeTwo
-          label={"Featured Products"}
-          data={myFeaturedTwo}
-          width={250}
-        ></FeaturedTypeTwo>
-        <FeaturedTypeThree
-          label={"Latest Products"}
-          width={275}
-          data={myFeaturedThree}
-        ></FeaturedTypeThree>
-      </div>
-    </main>
+    <Suspense fallback={<Loading></Loading>}>
+      <main className="flex flex-col min-h-screen w-full bg-white">
+        <div>
+          <FeaturedTypeOne data={myFeaturedOne}></FeaturedTypeOne>
+          <FeaturedTypeTwo
+            label={"Featured Products"}
+            data={myFeaturedTwo}
+            width={250}
+          ></FeaturedTypeTwo>
+          <FeaturedTypeThree
+            label={"Latest Products"}
+            width={275}
+            height={275}
+            data={myFeaturedThree}
+          ></FeaturedTypeThree>
+        </div>
+      </main>
+    </Suspense>
   );
 }

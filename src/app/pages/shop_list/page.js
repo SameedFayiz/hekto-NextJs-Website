@@ -42,7 +42,7 @@ export default function Page() {
                       mykey={data.id}
                       size={""}
                       width={""}
-                      height={"250px"}
+                      height={250}
                       src={data.image}
                       title={data.title}
                       price={data.price}

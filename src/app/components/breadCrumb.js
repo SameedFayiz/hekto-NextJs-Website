@@ -52,7 +52,7 @@ const BreadCrumbComponent = () => {
   );
   return (
     <div className="bg-gray-100 py-12 sm:py-16 md:py-20 px-[12%] md:px-[14%] ">
-      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wide mb-2">
+      <h1 className="text-black text-xl sm:text-2xl md:text-3xl font-bold tracking-wide mb-2">
         {breadcrumbNameMap[pathname]}
       </h1>
       <Breadcrumb

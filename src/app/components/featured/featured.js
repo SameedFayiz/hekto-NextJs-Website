@@ -9,7 +9,8 @@ const FeaturedTypeOne = (props) => {
   return (
     <Carousel
       dots={{ className: "carousel-dots" }}
-      className="w-full my-carousel"
+      className="w-full my-carousel bg-slate-100"
+      autoplay
     >
       {data?.map((obj, index) => {
         return (
@@ -168,7 +169,7 @@ const FeaturedTypeThree = (props) => {
     return {
       key: index,
       label: (
-        <div className="text-blue-800 text-lg font-medium tracking-wide hover:text-pink-500 transition duration-300">
+        <div className="text-blue-800 text-lg font-medium tracking-wide transition duration-300">
           {obj.label ? obj.label : "Label"}
         </div>
       ),
@@ -178,12 +179,13 @@ const FeaturedTypeThree = (props) => {
             return (
               <div
                 key={index}
-                className="lg:w-1/3 md:w-1/2 p-4 w-full flex justify-center"
+                className="lg:w-1/3 md:w-1/2 py-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 w-full flex justify-center"
               >
                 <CardTypeOne
                   mykey={objInner.id}
                   size={props.size}
                   width={props.width}
+                  height={props.height}
                   title={objInner.title}
                   desc={objInner.description}
                   price={objInner.price}
@@ -209,24 +211,6 @@ const FeaturedTypeThree = (props) => {
           items={featuredItems}
           onChange={onChange}
         />
-        {/* <div className="flex flex-wrap">
-          <div className="lg:w-1/3 md:w-1/2 p-4 w-full flex justify-center">
-            <CardTypeOne
-              width={250}
-              title={testData.title}
-              desc={testData.description}
-              price={testData.price}
-              rating={testData.rating.rate}
-              src={testData.image}
-            ></CardTypeOne>
-          </div>
-          <div className="lg:w-1/3 md:w-1/2 p-4 w-full flex justify-center">
-            <CardTypeOne></CardTypeOne>
-          </div>
-          <div className="lg:w-1/3 md:w-1/2 p-4 w-full flex justify-center">
-            <CardTypeOne></CardTypeOne>
-          </div>
-        </div> */}
       </div>
     </section>
   );

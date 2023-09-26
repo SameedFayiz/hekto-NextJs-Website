@@ -13,3 +13,12 @@
 .carousel-dots > li.slick-active {
   background: #882adf !important;
 }
+
+.ant-tabs-tab-active > div > div {
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity)) !important;
+}
+
+.ant-tabs-ink-bar {
+  background-color: rgb(236 72 153) !important;
+}

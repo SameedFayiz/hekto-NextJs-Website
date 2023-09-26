@@ -113,7 +113,7 @@ const CardTypeOne = (props) => {
       hoverable
       cover={
         <div
-          className="h-44 w-max overflow-hidden p-4 pb-0"
+          className="h-44 w-max overflow-hidden p-1 pb-0"
           style={{ height: props.height ? props.height : "" }}
         >
           <Image
@@ -136,7 +136,7 @@ const CardTypeOne = (props) => {
         </ButtonOne>
       </Link>
       <div className="w-full flex justify-between mt-3">
-        <div className="line-clamp-1">
+        <div className="line-clamp-1 max-w-[80%]">
           <p className="text-blue-800 text-xs font-medium underline decoration-2 decoration-gray-400 underline-offset-2">
             {props.title ? props.title : "Title"}
           </p>
@@ -195,11 +195,11 @@ const ProductCardList = (props) => {
       </Link>
       <div className="w-full flex flex-col items-center">
         <div className="line-clamp-1">
-          <p className="text-blue-800 text-base font-bold">
+          <p className="text-blue-800 text-[12px] sm:text-base font-bold">
             {props.title ? props.title : "Title"}
           </p>
         </div>
-        <div className="text-blue-800 text-sm">
+        <div className="text-blue-800 text-[10px] sm:text-sm">
           {props.price ? props.price : "Price"}
         </div>
       </div>
