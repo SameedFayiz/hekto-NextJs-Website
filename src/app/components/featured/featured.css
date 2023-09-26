@@ -1,0 +1,15 @@
+.carousel-dots > li {
+  padding: 0px 4px !important;
+}
+.carousel-dots > li > button,
+.carousel-dots > li {
+  border-radius: 4px !important;
+  background: #6a6a6a !important;
+}
+.carousel-dots > li.slick-active {
+  transform: perspective(100px) translateZ(20px) !important;
+}
+.carousel-dots > li.slick-active > button,
+.carousel-dots > li.slick-active {
+  background: #882adf !important;
+}
