@@ -152,7 +152,7 @@ const items2 = [
           </Link>
         </div>
         <div className="my-1 font-medium">
-          <Link href={"../pages/shop_list"}>
+          <Link href={"../pages/shop_grid"}>
             <Space>Products</Space>
           </Link>
         </div>
@@ -308,7 +308,7 @@ const HeaderComponent = (props) => {
             </Link>
           </div>
           <div className="">
-            <Link href={"../pages/shop_list"}>
+            <Link href={"../pages/shop_grid"}>
               <Space>Products</Space>
             </Link>
           </div>

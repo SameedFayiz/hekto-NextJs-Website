@@ -7,7 +7,6 @@ const breadcrumbNameMap = {
   "/pages": "Pages",
   "/pages/shop_grid": "Shop Grid",
   "/pages/shop_list": "Shop List",
-  "/pages/shop_list_sidebar": "Shop List Sidebar",
 };
 const BreadCrumbComponent = () => {
   const textClass = `text-sm md:text-lg font-medium`;

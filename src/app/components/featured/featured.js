@@ -1,7 +1,6 @@
-"use client";
 import css from "./featured.css";
 import { Carousel, Tabs } from "antd";
-import { CardTypeOne, ProductCard } from "../card/card";
+import { CardTypeOne, CardTypeTwo } from "../card/card";
 import Image from "next/image";
 
 const FeaturedTypeOne = (props) => {
@@ -87,7 +86,7 @@ const FeaturedTypeOne = (props) => {
 export { FeaturedTypeOne };
 
 const FeaturedTypeTwo = (props) => {
-  const data = props.data;
+  const data = props.data.products;
   return (
     <section className="w-full bg-white min-[1400px]:px-32">
       <div className="pt-28 flex flex-col items-center">
@@ -101,58 +100,24 @@ const FeaturedTypeTwo = (props) => {
                 key={index}
                 className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center"
               >
-                <ProductCard
+                <CardTypeTwo
                   mykey={obj.id}
-                  width={props.width}
+                  width={250}
+                  xs={225}
+                  base={240}
+                  sm={240}
+                  md={230}
+                  lg={210}
+                  xl={230}
                   title={obj.title}
                   desc={obj.description}
-                  price={obj.price}
-                  rating={obj.rating.rate}
-                  src={obj.image}
-                ></ProductCard>
+                  price={obj.price * 80}
+                  rating={obj.rating}
+                  src={obj.thumbnail}
+                ></CardTypeTwo>
               </div>
             );
           })}
-          {/* <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center">
-            <ProductCard
-              width={250}
-              title={testData.title}
-              desc={testData.description}
-              price={testData.price}
-              rating={testData.rating.rate}
-              src={testData.image}
-            ></ProductCard>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center">
-            <ProductCard
-              width={250}
-              title={testData.title}
-              desc={testData.description}
-              price={testData.price}
-              rating={testData.rating.rate}
-              src={testData.image}
-            ></ProductCard>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center">
-            <ProductCard
-              width={250}
-              title={testData.title}
-              desc={testData.description}
-              price={testData.price}
-              rating={testData.rating.rate}
-              src={testData.image}
-            ></ProductCard>
-          </div>
-          <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex justify-center">
-            <ProductCard
-              width={250}
-              title={testData.title}
-              desc={testData.description}
-              price={testData.price}
-              rating={testData.rating.rate}
-              src={testData.image}
-            ></ProductCard>
-          </div> */}
         </div>
       </div>
     </section>
@@ -161,15 +126,11 @@ const FeaturedTypeTwo = (props) => {
 export { FeaturedTypeTwo };
 
 const FeaturedTypeThree = (props) => {
-  const onChange = (key) => {
-    console.log(key);
-  };
-
   const featuredItems = props.data?.map((obj, index) => {
     return {
       key: index,
       label: (
-        <div className="text-blue-800 text-lg font-medium tracking-wide transition duration-300">
+        <div className="text-blue-800 text-[17px] sm:text-lg font-medium tracking-wide transition duration-300">
           {obj.label ? obj.label : "Label"}
         </div>
       ),
@@ -182,15 +143,20 @@ const FeaturedTypeThree = (props) => {
                 className="lg:w-1/3 md:w-1/2 py-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 w-full flex justify-center"
               >
                 <CardTypeOne
+                  width={300}
+                  xs={300}
+                  base={300}
+                  sm={300}
+                  md={300}
+                  lg={300}
+                  xl={300}
                   mykey={objInner.id}
                   size={props.size}
-                  width={props.width}
-                  height={props.height}
                   title={objInner.title}
                   desc={objInner.description}
-                  price={objInner.price}
-                  rating={objInner.rating.rate}
-                  src={objInner.image}
+                  price={objInner.price * 80}
+                  rating={objInner.rating}
+                  src={objInner.thumbnail}
                 ></CardTypeOne>
               </div>
             );
@@ -205,12 +171,7 @@ const FeaturedTypeThree = (props) => {
         <h1 className="font-serif mb-5 font-extrabold text-gray-900 text-3xl sm:text-4xl tracking-wider">
           {props.label ? props.label : "Label"}
         </h1>
-        <Tabs
-          centered
-          defaultActiveKey="1"
-          items={featuredItems}
-          onChange={onChange}
-        />
+        <Tabs centered defaultActiveKey="1" items={featuredItems} />
       </div>
     </section>
   );

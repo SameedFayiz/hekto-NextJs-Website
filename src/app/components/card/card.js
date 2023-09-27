@@ -1,18 +1,97 @@
 "use client";
 import css from "./card.css";
-import { Avatar, Card, Image, Button } from "antd";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import is_touch_enabled from "@/app/api/touchDetect";
+import { deviceSizeResponse } from "@/app/api/winDimension";
+import { Avatar, Card, Image } from "antd";
+import { ButtonOne } from "../button";
 import {
   ShoppingCartOutlined,
   HeartTwoTone,
   StarFilled,
   HeartOutlined,
 } from "@ant-design/icons";
-import Link from "next/link";
-import { ButtonOne } from "../button";
+// import Image from "next/image"
 const { Meta } = Card;
 
-const ProductCard = (props) => {
-  return (
+const CardTypeOne = (props) => {
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    setTouch(is_touch_enabled());
+  }, []);
+  const tmpCard = (
+    <Card
+      key={props.mykey}
+      size={props.size ? props.size : "small"}
+      style={{
+        width: props.width ? props.width : 300,
+      }}
+      bordered={false}
+      className="my-ant-card relative group"
+      hoverable
+      cover={
+        <div
+          className="h-44 w-max overflow-hidden p-1 pb-0"
+          style={{
+            height: props.xs
+              ? deviceSizeResponse(
+                  props.xs,
+                  props.base,
+                  props.sm,
+                  props.md,
+                  props.lg,
+                  props.xl
+                )
+              : 250,
+          }}
+        >
+          <Image
+            alt="Image"
+            className="group-hover:opacity-60 transition-opacity"
+            height={"100%"}
+            width={"100%"}
+            preview={!touch}
+            src={
+              props.src
+                ? props.src
+                : "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+            }
+          />
+        </div>
+      }
+    >
+      {touch ? null : (
+        <Link href={props.viewLink ? props.viewLink : ""}>
+          <ButtonOne onClick={props.onclick1 ? props.onclick1 : () => {}}>
+            View
+          </ButtonOne>
+        </Link>
+      )}
+      <div className="w-full flex justify-between mt-3">
+        <div className="line-clamp-1 max-w-[72%] text-blue-800 text-base font-medium underline decoration-2 decoration-gray-300">
+          {props.title ? props.title : "Title"}
+        </div>
+        <div className="text-pink-500 text-base font-medium">
+          {"Rs. " + (props.price ? props.price : "Price")}
+        </div>
+      </div>
+    </Card>
+  );
+  return touch ? (
+    <Link href={props.viewLink ? props.viewLink : ""}>{tmpCard}</Link>
+  ) : (
+    tmpCard
+  );
+};
+export { CardTypeOne };
+
+const CardTypeTwo = (props) => {
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    setTouch(is_touch_enabled());
+  }, []);
+  const tmpCard = (
     <Card
       hoverable
       size={props.size ? props.size : "small"}
@@ -24,13 +103,25 @@ const ProductCard = (props) => {
       cover={
         <div
           className="h-52 w-max overflow-hidden p-4"
-          style={{ height: props.height ? props.height : 300 }}
+          style={{
+            height: props.xs
+              ? deviceSizeResponse(
+                  props.xs,
+                  props.base,
+                  props.sm,
+                  props.md,
+                  props.lg,
+                  props.xl
+                )
+              : 300,
+          }}
         >
           <Image
             alt="Image"
             className="group-hover:opacity-60 transition-opacity"
             height={"100%"}
             width={"100%"}
+            preview={!touch}
             src={
               props.src
                 ? props.src
@@ -83,75 +174,39 @@ const ProductCard = (props) => {
           </div>
         }
       />
-      <Link href={props.viewLink ? props.viewLink : ""}>
-        <ButtonOne onClick={props.onclick3 ? props.onclick3 : () => {}}>
-          View
-        </ButtonOne>
-      </Link>
+      {touch ? null : (
+        <Link href={props.viewLink ? props.viewLink : ""}>
+          <ButtonOne onClick={props.onclick3 ? props.onclick3 : () => {}}>
+            View
+          </ButtonOne>
+        </Link>
+      )}
+
       <div className="w-full flex justify-between mt-3">
-        <div>{props.price ? props.price : "Price"}</div>
-        <div>
+        <div className="text-pink-500 text-base sm:text-lg font-semibold">
+          {"Rs. " + (props.price ? props.price : "Price")}
+        </div>
+        <div className="text-base">
           {props.rating ? props.rating : "Rating"}
           <StarFilled className="text-yellow-400 ms-1" />
         </div>
       </div>
     </Card>
   );
-};
-export { ProductCard };
-
-const CardTypeOne = (props) => {
-  return (
-    <Card
-      key={props.mykey}
-      size={props.size ? props.size : "small"}
-      style={{
-        width: props.width ? props.width : 300,
-      }}
-      bordered={false}
-      className="my-ant-card relative group"
-      hoverable
-      cover={
-        <div
-          className="h-44 w-max overflow-hidden p-1 pb-0"
-          style={{ height: props.height ? props.height : "" }}
-        >
-          <Image
-            alt="Image"
-            className="group-hover:opacity-60 transition-opacity"
-            height={"100%"}
-            width={"100%"}
-            src={
-              props.src
-                ? props.src
-                : "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            }
-          />
-        </div>
-      }
-    >
-      <Link href={props.viewLink ? props.viewLink : ""}>
-        <ButtonOne onClick={props.onclick1 ? props.onclick1 : () => {}}>
-          View
-        </ButtonOne>
-      </Link>
-      <div className="w-full flex justify-between mt-3">
-        <div className="line-clamp-1 max-w-[80%]">
-          <p className="text-blue-800 text-xs font-medium underline decoration-2 decoration-gray-400 underline-offset-2">
-            {props.title ? props.title : "Title"}
-          </p>
-        </div>
-        <div className="text-blue-800 text-xs font-medium">
-          {props.price ? props.price : "Price"}
-        </div>
-      </div>
-    </Card>
+  return touch ? (
+    <Link href={props.viewLink ? props.viewLink : ""}>{tmpCard}</Link>
+  ) : (
+    tmpCard
   );
 };
-export { CardTypeOne };
+export { CardTypeTwo };
 
 const ProductCardList = (props) => {
-  return (
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    setTouch(is_touch_enabled());
+  }, []);
+  const tmpCard = (
     <Card
       key={props.mykey}
       size={props.size ? props.size : "small"}
@@ -160,17 +215,29 @@ const ProductCardList = (props) => {
       }}
       hoverable
       bordered={false}
-      className="relative group shadow-2xl my-ant-card"
+      className="relative group shadow-2xl"
       cover={
         <div
           className="h-52 w-max overflow-hidden p-1"
-          style={{ height: props.height ? props.height : "" }}
+          style={{
+            height: props.xs
+              ? deviceSizeResponse(
+                  props.xs,
+                  props.base,
+                  props.sm,
+                  props.md,
+                  props.lg,
+                  props.xl
+                )
+              : "",
+          }}
         >
           <Image
             alt="Image"
             className="group-hover:opacity-60 transition-opacity"
             height={"100%"}
             width={"100%"}
+            preview={!touch}
             src={
               props.src
                 ? props.src
@@ -180,30 +247,50 @@ const ProductCardList = (props) => {
         </div>
       }
     >
-      <HeartOutlined
-        style={{
-          fontSize: "15px",
-        }}
-        className="absolute top-3 right-3 hidden group-hover:block rounded-full bg-white hover:text-pink-400 p-[6px]"
-        key="wish"
-        onClick={props.onclick1 ? props.onclick1 : () => {}}
+      <Meta
+        title={
+          <div className="text-sm beak-words group-hover:opacity-60 transition-opacity">
+            {props.title ? props.title : "Card title"}
+          </div>
+        }
+        description={
+          <div className="text-[13px] line-clamp-2">
+            {props.desc ? props.desc : "This is the description"}
+          </div>
+        }
       />
-      <Link href={props.viewLink ? props.viewLink : ""}>
-        <ButtonOne onClick={props.onclick2 ? props.onclick2 : () => {}}>
-          View
-        </ButtonOne>
-      </Link>
-      <div className="w-full flex flex-col items-center">
-        <div className="line-clamp-1">
-          <p className="text-blue-800 text-[12px] sm:text-base font-bold">
-            {props.title ? props.title : "Title"}
-          </p>
+      {touch ? null : (
+        <>
+          <HeartOutlined
+            style={{
+              fontSize: "15px",
+            }}
+            className="absolute top-3 right-3 hidden group-hover:block rounded-full bg-white hover:text-pink-400 p-[6px]"
+            key="wish"
+            onClick={props.onclick1 ? props.onclick1 : () => {}}
+          />
+          <Link href={props.viewLink ? props.viewLink : ""}>
+            <ButtonOne onClick={props.onclick2 ? props.onclick2 : () => {}}>
+              View
+            </ButtonOne>
+          </Link>
+        </>
+      )}
+      <div className="w-full flex flex-col justify-between mt-3">
+        <div className=" text-pink-500 text-base sm:text-lg font-semibold">
+          {"Rs. " + (props.price ? props.price : "Price")}
         </div>
-        <div className="text-blue-800 text-[10px] sm:text-sm">
-          {props.price ? props.price : "Price"}
+        <div className="text-xs">
+          {props.rating ? props.rating : "Rating"}
+          <StarFilled className="text-yellow-400 ms-1" />
         </div>
       </div>
     </Card>
+  );
+  return touch ? (
+    <Link href={props.viewLink ? props.viewLink : ""}>{tmpCard}</Link>
+  ) : (
+    tmpCard
   );
 };
 export { ProductCardList };
