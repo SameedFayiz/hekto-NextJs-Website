@@ -1,11 +1,11 @@
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import {
   FeaturedTypeOne,
   FeaturedTypeThree,
   FeaturedTypeTwo,
-} from "./components/featured/featured";
+} from "@/components/featured/featured";
 import Loading from "./loading";
-import { featuredTwoData, featuredThreeData } from "./api/featuredProducts";
+import { featuredTwoData, featuredThreeData } from "@/lib/featuredProducts";
 const myFeaturedOne = [
   {
     id: 7,

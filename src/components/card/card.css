@@ -1,0 +1,7 @@
+.my-ant-card > .ant-card-body {
+  padding-top: 0;
+}
+
+.custom_card_list > .ant-card-body {
+  width: 100%;
+}

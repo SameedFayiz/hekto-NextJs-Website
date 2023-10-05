@@ -1,4 +1,5 @@
 "use client";
+import css from "./header.css";
 import { Dropdown, Space, Collapse, Input } from "antd";
 import {
   CaretDownOutlined,
@@ -137,14 +138,9 @@ const items2 = [
     children: (
       <div className="flex flex-col">
         <div className="my-1 font-medium">
-          <Dropdown menu={{ items }} placement="bottom" arrow>
-            <Link href={"/"}>
-              <Space>
-                Home
-                <CaretDownOutlined />
-              </Space>
-            </Link>
-          </Dropdown>
+          <Link href={"/"}>
+            <Space>Home</Space>
+          </Link>
         </div>
         <div className="my-1 font-medium">
           <Link href={""}>
@@ -152,7 +148,7 @@ const items2 = [
           </Link>
         </div>
         <div className="my-1 font-medium">
-          <Link href={"../pages/shop_grid"}>
+          <Link href={"/pages/shop_grid"}>
             <Space>Products</Space>
           </Link>
         </div>
@@ -292,53 +288,39 @@ const HeaderComponent = (props) => {
               <Space>Hekto</Space>
             </Link>
           </div>
-          <div className="">
-            <Dropdown menu={{ items }} placement="bottom" arrow>
-              <Link href={"/"}>
-                <Space>
-                  Home
-                  <CaretDownOutlined />
-                </Space>
-              </Link>
-            </Dropdown>
+          <div className="font-medium">
+            <Link href={"/"}>
+              <Space>Home</Space>
+            </Link>
           </div>
-          <div className="">
+          <div className="font-medium">
             <Link href={""} className="cursor-text">
               <Space>Pages</Space>
             </Link>
           </div>
-          <div className="">
-            <Link href={"../pages/shop_grid"}>
+          <div className="font-medium">
+            <Link href={"/pages/shop_grid"}>
               <Space>Products</Space>
             </Link>
           </div>
-          <div className="">
+          <div className="font-medium">
             <Link href={""}>
               <Space>Blogs</Space>
             </Link>
           </div>
-          <div className="">
+          <div className="font-medium">
             <Link href={""}>
               <Space>Shop</Space>
             </Link>
           </div>
-          <div className="">
+          <div className="font-medium">
             <Link href={""}>
               <Space>Contact</Space>
             </Link>
           </div>
         </div>
         <div className="hidden md:flex">
-          <Search
-            style={{
-              background: "#4095ff",
-              borderRadius: 7,
-            }}
-            allowClear
-            enterButton
-            size="large"
-            onSearch={onSearch}
-          />
+          <Search allowClear enterButton size="large" onSearch={onSearch} />
         </div>
       </nav>
     </div>

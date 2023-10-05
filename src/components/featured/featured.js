@@ -1,6 +1,6 @@
 import css from "./featured.css";
 import { Carousel, Tabs } from "antd";
-import { CardTypeOne, CardTypeTwo } from "../card/card";
+import { CardTypeOne, CardTypeTwo } from "@/components/card/card";
 import Image from "next/image";
 
 const FeaturedTypeOne = (props) => {

@@ -7,6 +7,7 @@ const breadcrumbNameMap = {
   "/pages": "Pages",
   "/pages/shop_grid": "Shop Grid",
   "/pages/shop_list": "Shop List",
+  "/pages/product_details": "Product Details",
 };
 const BreadCrumbComponent = () => {
   const textClass = `text-sm md:text-lg font-medium`;
@@ -16,17 +17,22 @@ const BreadCrumbComponent = () => {
     const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
     return {
       key: url,
-      title: (
-        <Link href={url}>
-          <p
-            className={`${textClass} ${
-              pathname === url ? "text-pink-500 bg" : ""
-            }`}
-          >
+      title:
+        url === "/pages/product_details" ? (
+          <p className={`${textClass} text-pink-500`}>
             {breadcrumbNameMap[url]}
           </p>
-        </Link>
-      ),
+        ) : (
+          <Link href={url}>
+            <p
+              className={`${textClass} ${
+                pathname === url ? "text-pink-500" : ""
+              }`}
+            >
+              {breadcrumbNameMap[url]}
+            </p>
+          </Link>
+        ),
     };
   });
   const breadcrumbItems = [
@@ -44,7 +50,7 @@ const BreadCrumbComponent = () => {
     },
   ].concat(
     extraBreadcrumbItems.filter((ele) => {
-      if (ele.key != "/pages") {
+      if (ele.key != "/pages" && !ele.key.includes("/pages/product_details/")) {
         return ele;
       }
     })

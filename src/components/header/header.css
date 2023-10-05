@@ -1,0 +1,13 @@
+.ant-input-affix-wrapper:hover {
+  border-color: rgb(236 72 153) !important;
+}
+.ant-input-affix-wrapper-focused {
+  border-color: rgb(236 72 153) !important;
+}
+
+.ant-input-group-addon > button {
+  background-color: rgb(236 72 153) !important;
+}
+.ant-input-group-addon > button:hover {
+  background-color: rgb(255, 112, 183) !important;
+}

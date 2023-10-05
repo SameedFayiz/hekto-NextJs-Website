@@ -1,7 +1,7 @@
 "use client";
-import { ProductCardList } from "@/app/components/card/card";
+import { ProductCardGrid } from "@/components/card/card";
 import { Col, Row } from "antd";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import Loading from "./loading";
 
 export default function Page() {
@@ -19,7 +19,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white w-full py-32">
+    <div className="min-h-screen bg-white w-full pb-32">
       <Row>
         <Col className="min-h-screen" xs={1} sm={2} md={2} lg={3} xl={4}></Col>
         <Col className="min-h-screen" xs={22} sm={20} md={20} lg={18} xl={16}>
@@ -38,7 +38,7 @@ export default function Page() {
                     lg={6}
                     xl={6}
                   >
-                    <ProductCardList
+                    <ProductCardGrid
                       mykey={data.id}
                       size={""}
                       width={""}
@@ -53,10 +53,10 @@ export default function Page() {
                       desc={data.description}
                       price={data.price * 80}
                       rating={data.rating}
-                      viewLink={""}
+                      viewLink={`./product_details/${data.id}`}
                       onclick1={""}
                       onclick2={""}
-                    ></ProductCardList>
+                    ></ProductCardGrid>
                   </Col>
                 );
               })
