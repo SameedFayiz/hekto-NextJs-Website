@@ -1,10 +1,9 @@
 import { Skeleton } from "antd";
 
-const Loading = () => {
+export default function Loading() {
   return (
     <>
       <Skeleton active />;
     </>
   );
-};
-export default Loading;
+}

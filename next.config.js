@@ -9,6 +9,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "i.dummyjson.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "fakestoreapi.com",
         pathname: "/**",
       },

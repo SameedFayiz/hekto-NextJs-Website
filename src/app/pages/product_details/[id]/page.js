@@ -10,6 +10,7 @@ export default async function Page({ params }) {
         title={data.title}
         rating={data.rating}
         price={data.price * 80}
+        images={data.images}
       ></ProductDetailCard>
     </div>
   );

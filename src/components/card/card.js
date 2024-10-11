@@ -2,9 +2,10 @@
 import css from "./card.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import is_touch_enabled from "@/lib/touchDetect";
 import { deviceSizeResponse } from "@/lib/winDimension";
-import { Avatar, Card, Image } from "antd";
+import { Card, Carousel, Image as AntImage } from "antd";
 import { ButtonOne } from "@/components/button";
 import {
   ShoppingCartOutlined,
@@ -12,8 +13,6 @@ import {
   StarFilled,
   HeartOutlined,
 } from "@ant-design/icons";
-// import Image from "next/image"
-const { Meta } = Card;
 
 const CardTypeOne = (props) => {
   const [touch, setTouch] = useState(false);
@@ -46,7 +45,7 @@ const CardTypeOne = (props) => {
               : 250,
           }}
         >
-          <Image
+          <AntImage
             alt="Image"
             className="group-hover:opacity-60 transition-opacity"
             height={"100%"}
@@ -116,7 +115,7 @@ const CardTypeTwo = (props) => {
               : 300,
           }}
         >
-          <Image
+          <AntImage
             alt="Image"
             className="group-hover:opacity-60 transition-opacity"
             height={"100%"}
@@ -216,7 +215,7 @@ const ProductCardGrid = (props) => {
               : "",
           }}
         >
-          <Image
+          <AntImage
             alt="Image"
             className="group-hover:opacity-60 transition-opacity"
             height={"100%"}
@@ -312,7 +311,7 @@ const ProductCardList = (props) => {
             borderBottomLeftRadius: 8,
           }}
         >
-          <Image
+          <AntImage
             alt="Image"
             className="group-hover:opacity-60 transition-opacity"
             height={"100%"}
@@ -367,7 +366,17 @@ export { ProductCardList };
 const ProductDetailCard = (props) => {
   return (
     <div className="shadow-lg w-[60%] flex">
-      <div className="w-1/2 bg-slate-400">hello</div>
+      <div className="w-1/2 bg-slate-700">
+        <Carousel className="h-96">
+          {props.images?.map((ele, index) => {
+            return (
+              <div className="flex h-full w-full" key={index}>
+                <Image src={ele} alt={"Product Image"} fill={true} />
+              </div>
+            );
+          })}
+        </Carousel>
+      </div>
       <div className="w-1/2 bg-slate-50">
         <div className="flex flex-col w-full p-10">
           <div className="text-2xl font-semibold text-indigo-900">
